@@ -1,0 +1,72 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import StatCard from "../components/Stats/StatCard.astro";
+import Card from "../components/Cards/Card.astro";
+export const userCompanies = [{CompanyTitle: 'E-commerce Ian'}, {CompanyTitle: 'Inversiones A&R'}];
+---
+
+<MainLayout pageName="Inicio">
+  <section class="p-12">
+    <h1 class="text-white font-bold text-3xl">
+      ¡Hola, <span id="userName">UserName</span>!,<br /> Bienvenido a <span
+        class="text-2xl"
+        >THE <span class="text-blue-500">MILLIONAIRE</span> PROJECT.</span
+      >
+    </h1>
+    <p class="text-white font-thin text-sm py-1">
+      Aquí tienes un seguimiento de tus finanzas: Gastos, Ingresos, Activos &
+      Pasivos.
+    </p>
+  </section>
+
+  <section class="p-12 flex flex-wrap justify-center gap-12 w-fit">
+    <StatCard
+      CardID="AccountBalanceStats"
+      balance="7.590.633"
+      cardPurpose="Tu Dinero"
+      isLoss={false}
+    />
+
+    <StatCard
+      CardID="BillsCardStats"
+      balance="0"
+      cardPurpose="Tus Gastos"
+      isLoss={true}
+    />
+
+    <StatCard
+      CardID="AccountActivesStats"
+      balance="0"
+      cardPurpose="Tus Activos"
+      isLoss={false}
+    />
+
+    <StatCard
+      CardID="AccountPassivesStats"
+      balance="0"
+      cardPurpose="Tus Pasivos"
+      isLoss={true}
+    />
+  </section>
+
+  <span class="relative flex justify-center">
+    <div
+      class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"
+    >
+    </div>
+
+    <span class="relative z-10 bg-gray-950 px-6 text-white text-xl font-bold"
+      >GESTION DE ENTRADAS Y SALIDAS</span
+    >
+  </span>
+
+  <section class="p-12 gap-5 flex flex-wrap">
+    {userCompanies.map((Company) => <Card Title={Company.CompanyTitle}/>)}
+  </section>
+
+  <script>
+    import { DataHandling } from "../Data/UserData";
+
+    DataHandling();
+  </script>
+</MainLayout>

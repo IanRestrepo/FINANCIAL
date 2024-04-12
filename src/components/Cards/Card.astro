@@ -1,0 +1,45 @@
+---
+interface Props {
+    Title: string;
+}
+
+const { Title } = Astro.props;
+
+import Image from "./BANNER.jpg";
+---
+
+<a href="#" class="block rounded-lg p-4 shadow-sm bg-slate-950 border border-gray-700 w-96">
+    <img
+      alt=""
+      src={Image.src}
+      class="h-56 w-full rounded-md object-cover"
+    />
+  
+    <div class="mt-2">
+      <dl>
+        <div>
+          <dt class="sr-only">Facturación</dt>
+  
+          <dd class="text-sm text-white">$2'420,000</dd>
+        </div>
+  
+        <div>
+          <dt class="sr-only">Address</dt>
+  
+          <dd class="font-medium text-gray-600">{ Title }</dd>
+        </div>
+      </dl>
+        <section>
+            <form>
+                <label for="balance">
+                    <input type="text" name="balance" id="balance" class="rounded-md bg-slate-900 border border-gray-800 outline-none ring-indigo-500 px-2 text-indigo-300 w-full" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <span class="flex justify-evenly gap-2 text-cente">
+                        <button class="bg-emerald-200 px-10 mt-2 rounded-sm uppercase font-bold text-emerald-950">Ingresar</button>
+                        <button class="bg-red-200 px-10 mt-2 rounded-sm uppercase font-bold text-red-950">Restar</button>
+                    </span>
+                </label>
+            </form>
+        </section>
+      </div>
+    </div>
+  </a>

@@ -1,0 +1,41 @@
+---
+interface Props {
+  pageName: string;
+}
+
+const { pageName } = Astro.props;
+
+import SideMenu from "../components/Navigation/SideMenu.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageName}</title>
+  </head>
+  <body class="bg-gray-950">
+    <div class="flex flex-row h-screen">
+      <div class="h-full">
+        <div class="sticky top-0">
+          <SideMenu ID="sideMenu" profilePictureURL=""/>
+        </div>
+      </div>
+      <div class="overflow-y-auto">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type="module">
+  window.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
+    const profile = localStorage.getItem('imageurl');
+    const sideMenu = document.getElementById('sideMenu');
+    if (sideMenu) {
+      sideMenu.setAttribute('profilePictureURL', profile);
+    }
+  });
+</script>
